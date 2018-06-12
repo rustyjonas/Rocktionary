@@ -1,0 +1,40 @@
+
+<div *ngIf="comentarCancion">
+    <h2><span jhiTranslate="rocktionaryApp.comentarCancion.detail.title">Comentar Cancion</span> {{comentarCancion.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="rocktionaryApp.comentarCancion.comentario">Comentario</span></dt>
+        <dd>
+            <span>{{comentarCancion.comentario}}</span>
+        </dd>
+        <dt><span jhiTranslate="rocktionaryApp.comentarCancion.fechaComentario">Fecha Comentario</span></dt>
+        <dd>
+            <span>{{comentarCancion.fechaComentario | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="rocktionaryApp.comentarCancion.user">User</span></dt>
+        <dd>
+            {{comentarCancion.user?.login}}
+        </dd>
+        <dt><span jhiTranslate="rocktionaryApp.comentarCancion.cancion">Cancion</span></dt>
+        <dd>
+            <div *ngIf="comentarCancion.cancion">
+                <a [routerLink]="['/cancion', comentarCancion.cancion?.id]">{{comentarCancion.cancion?.nombre}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'comentar-cancion/'+ comentarCancion.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

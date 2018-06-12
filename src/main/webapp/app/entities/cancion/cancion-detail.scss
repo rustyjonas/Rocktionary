@@ -1,0 +1,383 @@
+@import '../../../content/scss/variables';
+
+    .album-detail {
+
+    * {
+        color: #fff;
+    }
+
+    .album-canciones {
+
+        h5, span {
+            width: 50%;
+            display: block;
+        }
+
+        span {
+            text-align: right;
+        }
+
+        ul {
+
+            li {
+                width: 100%;
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+            }
+
+        }
+
+        .album-cancion-container {
+            width: 100%;
+            audio {
+                width: 100%;
+            }
+
+        }
+
+    }
+
+    .container-mid {
+        position: relative;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+        .album_perfil{
+            width: 400px;
+            position: relative;
+            margin-top: 10em;
+        }
+        .album_perfil img:first-child{
+            width: 490px;
+            z-index: 1;
+            position: relative;
+        }
+
+        .album_perfil img:last-child{
+            position: absolute;
+            height: 240px;
+            border-radius: 50%;
+            width: 240px;
+            left: 31%;
+            top: 15%;
+        }
+
+    &__cover {
+        border-radius: 3px 3px 0 0;
+        position: relative;
+        height: 400px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background:
+            linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 70%, rgba(0, 0, 0, 0.7) 93%, #000 99%),
+            linear-gradient(to top, rgba(0, 0, 0, 0.1) 85%, rgba(0, 0, 0, 0.4) 93%, #000 99%);
+
+
+        .blurred-container {
+            position: absolute;
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            .blurred {
+                background-size: cover;
+                background: fixed center;
+                filter: blur(10px);
+                height: 100%;
+                transform: scale(1.10);
+            }
+        }
+
+    }
+
+    &__picture-container {
+        border: 2px solid #fff;
+        margin: 20px auto;
+        width: 250px;
+        height: 250px;
+        border-radius: 50%;
+        overflow: hidden;
+        img {
+            width: 100%;
+            height: 100%;
+        }
+
+        @media (min-width: 1000px) {
+            position: absolute;
+            left: 100px;
+            bottom: -80px;
+            z-index: 200;
+            width: 320px;
+            height: 320px;
+        }
+
+    }
+
+    &__stats {
+        position: absolute;
+        bottom: 0;
+        display: flex;
+        justify-content: center;
+        @media (min-width: 1000px) {
+            left: 55%;
+        }
+        a {
+            font-size: 13px;
+            text-decoration: none;
+            padding: .5em;
+            display: block;
+            color: #fff;
+            position: relative;
+            transition: all ease-in 0.2s;
+            &:not(.active):hover {background-color: rgba($secondary, 0.3)}
+            &:hover:not(.active)::after {border-top-color: rgba($secondary, 0.3)}
+            &::after {
+                content:'';
+                position: absolute;
+                opacity: 0;
+                bottom: -8px;
+                z-index: 10;
+                left: 50%;
+                transition: all ease-in 0.2s;
+                transform: translateX(-50%);
+                margin: 0 auto;
+                border-top: solid 9px #000;
+                border-left: solid 9px transparent;
+                border-right: solid 9px transparent;
+            }
+            &:nth-of-type(2) {
+                border-left: thin solid rgba(#fff, 0.3);
+                border-right: thin solid rgba(#fff, 0.3)
+            }
+            &.active {background-color: rgba($secondary, 1)}
+            &.active::after {opacity: 1; border-top-color: rgba($secondary, 1)}
+        }
+    }
+
+    &__resumen {
+
+        background-color: #000;
+        //background-color: #F7F7F7;
+
+        @media (min-width: 1000px) {
+            .container {
+                display: flex;
+                justify-content: space-between;
+            }
+        }
+
+
+        .album-canciones-total{
+            font-size: 20px;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        .album-spotify-profile {
+            color: #fff;
+        }
+
+        .album-name {
+            margin-top: 0;
+        }
+
+        .div-50 {
+            @media (min-width: 1000px) {
+                width: 49%;
+            }
+        }
+
+        .more-info  {
+            padding-top: 50px;
+            margin-top: 20px;
+
+            @media (min-width: 1000px) {
+                padding-top: 100px;
+                margin-top: 0;
+            }
+
+            p {
+                text-align: left !important;
+            }
+        }
+
+        .tabs {
+            margin-top: 30px;
+            @media (min-width: 1000px) {
+                order: 1;
+            }
+        }
+    }
+
+}
+
+.resumen-label {
+    padding: 10px 0;
+    display: block;
+}
+
+//
+.comentarios {
+
+    form {
+
+        textarea {
+            border-radius: 3px;
+            width: 100%;
+            min-width: 100%;
+            min-height: 50px;
+            height: 50px;
+            max-width: 100%;
+            border: thin solid rgba(#fff, .7);
+            background-color: #000;
+            padding: .5em;
+            font-size: 13px;
+            color: #fff;
+            transition: all ease-in 0.2s;
+            &:focus, &:active {
+                border: thin solid #fff;
+            }
+            outline: none;
+            &::placeholder {
+                color: #fff;
+            }
+        }
+
+        button {
+            outline: 0;
+            transition: all ease-in 0.2s;
+            background-color: #000;
+            color: #fff;
+            border: thin solid rgba(#fff, .7);
+            padding: .5em 1em;
+            border-radius: 3px;
+            margin-top: 5px;
+            &:hover {
+                border-color: #fff;
+            }
+            &:disabled {
+                cursor: not-allowed;
+                border: thin solid rgba(#fff, .7);
+                background-color: rgba(#fff, 0.3);
+            }
+        }
+    }
+}
+
+
+iframe[title="YouTube video player"] {
+    display: none !important;
+}
+
+.player-controls {
+
+    display: flex;
+    align-items: center;
+
+    .player-trigger {
+        margin-right: 10px;
+        cursor: pointer;
+    }
+    .player-slider {}
+
+
+
+
+
+// slider ranger
+    input[type='range'] {
+        box-sizing: border-box;
+        overflow: visible;
+        -webkit-appearance: none;
+        width: 300px;
+        height: 4em;
+        padding: 0 .5em;
+        border-radius: .625em;
+        background: transparent;
+        /* Firefox & Chrome/ Opera need this,
+           otherwise font-size is smaller */
+        font-size: 1em;
+        cursor: pointer;
+        /* wish I could style this asshole */
+    }
+    input[type='range']::-webkit-slider-runnable-track {
+        -webkit-appearance: none;
+        border: none;
+        /* because IE */
+        width: 25em;
+        height: 1.25em;
+        border-radius: 6.25em;
+        box-shadow: inset 0 1px 1px #e1e1e1, inset 0 0 0 .5em #f5f5f5, inset 0 1px 1px .5em #a5a5a5,  inset 0 -1px 0 .5em #fff;
+        background: #ddd;
+    }
+    input[type='range']::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        margin-top: -.25em;
+        /* weird shit, Chrome */
+        border: none;
+        width: 1.75em;
+        height: 1.75em;
+        border-radius: 50%;
+        box-shadow: 0 .25em .25em #b2b2b2,  0 .25em .5em #b2b2b2,  inset 0 -.125em .125em #949494,  inset 0 0 0 .25em #bbb,  inset 0 1px .125em .25em #676767;
+        background: #888;
+    }
+    input[type='range']::-moz-range-track {
+        z-index: -1;
+        /* fix Firefox WTF */
+        border: none;
+        /* because IE */
+        width: 25em;
+        height: 1.25em;
+        border-radius: 6.25em;
+        box-shadow: inset 0 1px 1px #e1e1e1, inset 0 0 0 .5em #f5f5f5, inset 0 1px 1px .5em #a5a5a5,  inset 0 -1px 0 .5em #fff;
+        background: #ddd;
+    }
+    input[type='range']::-moz-range-thumb {
+        border: none;
+        width: 1.75em;
+        height: 1.75em;
+        border-radius: 50%;
+        box-shadow: 0 .25em .25em #b2b2b2,  0 .25em .5em #b2b2b2,  inset 0 -.125em .125em #949494,  inset 0 0 0 .25em #bbb,  inset 0 1px .125em .25em #676767;
+        background: #888;
+        /* Firefox-only, it won't work in IE
+           and it's messed up in Chrome */
+        cursor: ew-resize;
+    }
+    input[type='range']::-ms-track {
+        border: none;
+        /* because IE */
+        width: 25em;
+        height: 1.25em;
+        border-radius: 6.25em;
+        box-shadow: inset 0 1px 1px #e1e1e1, inset 0 0 0 .5em #f5f5f5, inset 0 1px 1px .5em #a5a5a5,  inset 0 -1px 0 .5em #fff;
+        background: #ddd;
+        color: transparent;
+    }
+    input[type='range']::-ms-thumb {
+        border: none;
+        width: 1.75em;
+        height: 1.75em;
+        border-radius: 50%;
+        box-shadow: 0 .25em .25em #b2b2b2,  0 .25em .5em #b2b2b2,  inset 0 -.125em .125em #949494,  inset 0 0 0 .25em #bbb,  inset 0 1px .125em .25em #676767;
+        background: #888;
+    }
+    input[type='range']::-ms-fill-lower, input[type='range']::-ms-fill-upper {
+        background: transparent;
+    }
+    input[type='range']::-ms-tooltip {
+        display: none;
+    }
+    input[type='range']:focus {
+        outline: none;
+    }
+
+}
+
+
+

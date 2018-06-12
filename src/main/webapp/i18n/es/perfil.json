@@ -1,0 +1,14 @@
+{
+    "perfil":{
+        "title": "Perfil",
+        "first-name": "Nombre: ",
+        "last-name": "Apellido: ",
+        "email": "Correo electronico: ",
+        "my-playlist": "Mis listas de reproducción",
+        "no-playlist-created": "No tienes una lista de reproducción creada",
+        "edit-profile": "Editar Perfil",
+        "upload-picture": "Subir nueva imagen"
+
+
+    }
+}

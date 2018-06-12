@@ -1,0 +1,37 @@
+{
+    "equipo":{
+        "menu": "Equipo",
+        "title": "El equipo",
+        "descripcion": "“Somos cuatro estudiantes de segundo de desarrollo de aplicaciones web, y os invitamos a navegar por ROCKTIONARY porque deseamos reflejar todo lo que hemos aprendido en el curso y compartir además nuestra afición  por la música rock.“",
+        "about-us":{
+            "miembro1":{
+                "name": "Angelo Danan",
+                "info1": "Soy Angelo y quiero que descubras y disfrutes de la música rock con esta página.",
+                "info2": "Me formé en audiovisuales especializándome en fotografía y ahora con interés en aprender sobre el mundo del desarrollo web para poder expandir los medios en los que pueda aplicar mis conocimientos audiovisuales.",
+                "Frase-preferida1":"Frase preferida:",
+                "Frase-preferida2": "“La vida es como una CÁMARA, ENFOQUE en lo que es importante, CAPTURA los buenos momentos, DESARROLLA de los negativos, y si las cosas no funcionan, TOMA OTRO TIRO.“"
+            },
+            "miembro2":{
+                "name": "Rusty Gallardo",
+                "info1": "Me llamo Rusty me encanta la música y la programación, así que me encantaría que disfrutaras de esta página tanto como yo creándola.",
+                "info2": "Siempre me ha interesado el mundo de l informática y anteriormente me formé informática de redes, ahora me fascina la creación de las páginas web y pretendo especializarme en ello.",
+                "Frase-preferida1":"Frase preferida:",
+                "Frase-preferida2": "“Los GAMERS no mueren, ellos LO RESTAURAN!“"
+            },
+            "miembro3":{
+                "name": "Martin Hernandez",
+                "info1": "Soy Martin y espero que os guste la experiencia de navegar por las paginas de ROCKTIONARY  tanto como yo desarrollándola.",
+                "info2": "Siempre me ha gustado el mundo de la tecnología, primero me formé en redes y sistemas microinformáticos donde descubrí mi pasión por la programación, en concreto el desarrollo de aplicaciones web, actualmente llevo un año de experiencia realizando aplicaciones web.",
+                "Frase-preferida1":"Frase preferida:",
+                "Frase-preferida2": "“El éxito es la suma de pequeños esfuerzos repetidos día tras día.”"
+            },
+            "miembro4":{
+                "name": "Albert Serrano",
+                "info1": "Me llamo Albert, mi pasión por la música rock y el desarrollo de aplicaciones web se ven reflejados en esta página que espero disfrutéis.",
+                "info2": "Apasionado por la música rock y las nuevas tecnologías, siempre me interesó la informática en general así que cambié mis estudios de administración de empresas por el desarrollo de aplicaciones web con el objetivo de llegar a especializarme.",
+                "Frase-preferida1":"Frase preferida:",
+                "Frase-preferida2": "“Vive como si fueras a morir mañana, aprende como si fueras a vivir siempre.”"
+            }
+        }
+    }
+}

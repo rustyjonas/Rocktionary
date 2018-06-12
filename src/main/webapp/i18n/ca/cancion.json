@@ -1,0 +1,27 @@
+
+{
+    "rocktionaryApp": {
+        "cancion" : {
+            "home": {
+                "title": "Cançons",
+                "createLabel": "Create a new Cançó",
+                "createOrEditLabel": "Create or edit a Cançó"
+            },
+            "created": "A new Cancion is created with identifier {{ param }}",
+            "updated": "A Cancion is updated with identifier {{ param }}",
+            "deleted": "A Cancion is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Cançons {{ id }}?"
+            },
+            "detail": {
+                "title": "Cançó"
+            },
+            "nombre": "Nombre",
+            "duracion": "Duracion",
+            "letra": "Letra",
+            "album": "Album",
+            "puntuacione": "Puntuacione",
+            "comentario": "Comentario"
+        }
+    }
+}

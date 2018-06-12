@@ -1,0 +1,104 @@
+<div class="banda-detail" *ngIf="banda">
+    <div class="col banda-detail__cover">
+        <div class="blurred-container">
+            <div class="blurred" [ngStyle]="{'background-image':'url('+banda.images[0].url+')'}">
+            </div>
+            <p>{{ showVideoPlayer }}</p>
+        </div>
+        <div class="container container-mid">
+
+            <div class="banda_perfil">
+                    <img src="../../entities/equipo/img/rockframeV2.png" alt="">
+                    <img [src]="banda.images[0].url"  alt="Imagen de banda"/>
+            </div>
+            <div class="banda-detail__stats">
+                <a data-tab="general" class="active" (click)="triggerClass($event)">General</a>
+                <a data-tab="comentarios" (click)="triggerClass($event)" >
+                    Comentarios
+                    <span *ngIf="bandaComments.length">({{ bandaComments.length }})</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="col banda-detail__resumen">
+        <div class="container">
+            <div class="div-50 tabs">
+                <section *ngIf="!showComentarios" class="top-tracks-container">
+                    <h3 class="text-white">Top canciones de {{banda.name}}</h3>
+                    <ul class="grid">
+                        <li *ngFor="let track of topTracks.tracks" >
+                            <h5 (click)="toggleIcon(track.name, track.album.images[1].url)">{{track.name}}</h5>
+                            <div class="img-audio-container">
+                                <img class="imagen-audio" [src]="track.album.images[1].url">
+                            </div>
+                            <div class="options" ngbDropdown [autoClose]="'outside'" #dropDown="ngbDropdown">
+                                <img class="addIcon" ngbDropdownToggle src="../../../content/images/addIcon.png" alt="">
+                                <ul class="rocktionary-dropdown" ngbDropdownMenu>
+                                    <li ngbDropdown ngbDropdownToggle [placement]="'right'">
+                                        Añadir a playlist <i class="pl-1 fa fa-chevron-right"></i>
+                                        <ul class="rocktionary-dropdown" ngbDropdownMenu>
+                                            <li *ngFor="let playlist of playLists.items" (click)="addTrackToPlayList(playlist, track, dropDown);">
+                                                {{ playlist.name }}
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </section>
+
+                <!--<div ng-if="vm.showGeneral" class="general">-->
+                <!--<span class="resumen-label">INFORMACIÓN GENERAL</span>-->
+                <!--<p>{{vm.banda.localizacion}}</p>-->
+                <!--</div>-->
+                <!--<div ng-if="vm.showSeguidores" class="seguidores">-->
+                <!--<span class="resumen-label">SEGUIDORES</span>-->
+                <!--<p>{{vm.banda.localizacion}}</p>-->
+                <!--</div>-->
+                <section *ngIf="showComentarios" class="comentarios">
+                <span class="resumen-label text-white">COMENTARIOS</span>
+                <form (submit)="addComment()" name="addComentForm" class="commentarios__form">
+                    <textarea style="position: relative;" name="comment" [(ngModel)]="commentText" placeholder="Deja tú comentario...">
+                        <div class="loader-container">
+                            <div class="loader"></div>
+                        </div>
+                    </textarea>
+                    <button [disabled]="!commentText" type="submit" class="btn">Enviar</button>
+                </form>
+                <ul *ngIf="bandaComments.length" class="list-unstyled comment-section">
+                    <li class="comment" *ngFor="let comment of bandaComments">
+                        <i class="comment-remove fa fa-remove text-white" *ngIf="loggedUser === comment.user.login" (click)="removeComment($event, comment.id)"></i>
+                        <span class="comment-date text-white">{{ comment.fechaComentario | date: 'short' }}</span>
+                        <a [routerLink]="['/user', comment.user.login]" class="comment-user m-0 text-white">{{ comment.user.login }}</a>
+                        <p class="comment-text m-0 text-white">{{ comment.comentario }}</p>
+                        <div class="loader-container">
+                            <div class="loader"></div>
+                        </div>
+                    </li>
+                </ul>
+                <p *ngIf="!bandaComments.length" class="no-comments-yet text-white">
+                    Aún no hay comentarios sobre {{ banda.name }} <br>
+                    <strong>¡Sé el primero en comentar!</strong>
+                </p>
+                </section>
+            </div>
+
+            <div class="div-50 more-info mt-3">
+                <p class="text-white">Puntúa a {{ banda.name }}</p>
+                <rocktionary-bar-rating [bandaName]="banda.name"></rocktionary-bar-rating>
+                <h1 class="artist-name text-white">{{banda.name}}</h1>
+                <h3><a class="text-white artist-spotify-profile" target="_blank" [href]="banda.external_urls.spotify">Perfil de {{banda.name}} en Spotify</a></h3>
+                <p class="text-white">Seguidores <span class="followers">{{banda.followers.total | number }}</span></p>
+                <button (click)="showTruncatedText = !showTruncatedText" class="leer-mas">{{ !showTruncatedText ? 'Leer menos' : 'Leer mas' }}</button>
+                <p *ngIf="showTruncatedText" class="text-justify text-white mb-0 pb-3">
+                    {{ bandaBio.artist.bio.content.length > 300 ? (bandaBio.artist.bio.content | slice:0:300 ) +'..': (bandaBio.artist.bio.content) }}
+                </p>
+                <p class="text-justify text-white mb-0 pb-3" *ngIf="!showTruncatedText">
+                    {{ bandaBio.artist.bio.content }}
+                </p>
+            </div>
+        </div>
+    </div>
+
+</div>

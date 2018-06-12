@@ -1,0 +1,34 @@
+{
+    "equipo":{
+        "menu":"Equip",
+        "title": "L'equip",
+        "descripcion": "“Som quatre estudiants de segon de desenvolupament d'aplicacions web, i us convidem a navegar per ROCKTIONARY perquè volem reflectir tot el que hem après en el curs i compartir més la nostra afició per la música rock.“",
+        "about-us":{
+            "miembro1":{
+                "info1": "Sóc Angelo i vull que descobreixis i gaudeixis de la música rock amb aquesta pàgina.",
+                "info2": "Em vaig formar en audiovisuals especialitzant-me en fotografia i ara amb interès en aprendre sobre el món del desenvolupament web per poder expandir els mitjans en què pugui aplicar els meus coneixements audiovisuals.",
+                "Frase-preferida1":"Frase preferida:",
+                "Frase-preferida2": "“La vida és com una CÀMERA, FOCA sobre el que és important, CAPTURA els bons temps, DESENVOLUPAMENT dels negatius i, si les coses no funcionen, TENIRA ALTRES TIES“"
+            },
+            "miembro2":{
+                "info1": "Em dic Rusty m'encanta la música i la programació, així que m'encantaria que gaudiràs d'aquesta pàgina tant com jo creant-la.",
+                "info2": "Sempre m'ha interessat el món de la informàtica i anteriorment em vaig formar informàtica de xarxes, ara em fascina la creació de les pàgines web i pretenc especialitzar-me en això.",
+                "Frase-preferida1":"Frase preferida:",
+                "Frase-preferida2": "“¡Els GAMERS no moren, es ressonen!“"
+            },
+            "miembro3":{
+                "info1": "Sóc Martin i espero que us agradi l'experiència de navegar per les pàgines d'ROCKTIONARY tant com jo desenvolupant-la.",
+                "info2": "Sempre m'ha agradat el món de la tecnologia, primer em vaig formar en xarxes i sistemes microinformàtics on vaig descobrir la meva passió per la programació, en concret el desenvolupament d'aplicacions web, actualment porto un any d'experiència realitzant aplicacions web.",
+                "Frase-preferida1":"Frase preferida:",
+                "Frase-preferida2": "“L'èxit és la suma de petits esforços repetits dia rere dia.”"
+
+            },
+            "miembro4":{
+                "info1": "Em dic Albert, la meva passió per la música rock i el desenvolupament d'aplicacions web es veuen reflectits en aquesta pàgina que espero gaudiu.",
+                "info2": "Apassionat per la música rock i les noves tecnologies, sempre em va interessar la informàtica en general així que vaig canviar els meus estudis d'administració d'empreses pel desenvolupament d'aplicacions web amb l'objectiu d'arribar a especialitzar-me.",
+                "Frase-preferida1":"Frase preferida:",
+                "Frase-preferida2": "“Viu com si anessis a morir demà, aprèn com si anessis a viure sempre.”"
+            }
+        }
+    }
+}

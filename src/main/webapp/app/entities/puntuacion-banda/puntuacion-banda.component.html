@@ -1,0 +1,72 @@
+<div>
+    <h2>
+        <span jhiTranslate="rocktionaryApp.puntuacionBanda.home.title">Puntuacion Bandas</span>
+        <button class="btn btn-primary float-right jh-create-entity create-puntuacion-banda" [routerLink]="['/', { outlets: { popup: ['puntuacion-banda-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="rocktionaryApp.puntuacionBanda.home.createLabel">
+            Create new Puntuacion Banda
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="puntuacionBandas">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="rocktionaryApp.puntuacionBanda.valoracion">Valoracion</span></th>
+            <th><span jhiTranslate="rocktionaryApp.puntuacionBanda.fechaPuntuacion">Fecha Puntuacion</span></th>
+            <th><span jhiTranslate="rocktionaryApp.puntuacionBanda.banda_name">Banda Name</span></th>
+            <th><span jhiTranslate="rocktionaryApp.puntuacionBanda.user">User</span></th>
+            <th><span jhiTranslate="rocktionaryApp.puntuacionBanda.banda">Banda</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let puntuacionBanda of puntuacionBandas ;trackBy: trackId">
+                <td><a [routerLink]="['../puntuacion-banda', puntuacionBanda.id ]">{{puntuacionBanda.id}}</a></td>
+                <td>{{puntuacionBanda.valoracion}}</td>
+                <td>{{puntuacionBanda.fechaPuntuacion | date:'medium'}}</td>
+                <td>{{puntuacionBanda.banda_name}}</td>
+                <td>
+                    {{puntuacionBanda.user?.login}}
+                </td>
+                <td>
+                    <div *ngIf="puntuacionBanda.banda">
+                        <a [routerLink]="['../banda', puntuacionBanda.banda?.id ]" >{{puntuacionBanda.banda?.nombre}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../puntuacion-banda', puntuacionBanda.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'puntuacion-banda/'+ puntuacionBanda.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'puntuacion-banda/'+ puntuacionBanda.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

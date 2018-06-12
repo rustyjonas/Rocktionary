@@ -1,0 +1,12 @@
+{
+    "perfil":{
+        "title": "Perfil",
+        "first-name": "Nom: ",
+        "last-name": "Cognom: ",
+        "email": "Correu electrònic: ",
+        "my-playlist": "La meves llistes de reproducció",
+        "no-playlist-created": "No tens una llista de reproducció creada encara",
+        "edit-profile": "Edita el perfil",
+        "upload-picture": "Puja la nova imatge"
+    }
+}

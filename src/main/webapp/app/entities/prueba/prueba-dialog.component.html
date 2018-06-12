@@ -1,0 +1,42 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myPruebaLabel" jhiTranslate="rocktionaryApp.prueba.home.createOrEditLabel">Create or edit a Prueba</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!prueba.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="prueba.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="rocktionaryApp.prueba.foto" for="field_foto">Foto</label>
+            <div>
+                <img [src]="'data:' + prueba.fotoContentType + ';base64,' + prueba.foto" style="max-height: 100px;" *ngIf="prueba.foto" alt="prueba image"/>
+                <div *ngIf="prueba.foto" class="form-text text-danger clearfix">
+                    <span class="pull-left">{{prueba.fotoContentType}}, {{byteSize(prueba.foto)}}</span>
+                    <button type="button" (click)="clearInputImage('foto', 'fotoContentType', 'fileImage')" class="btn btn-secondary btn-xs pull-right">
+                        <span class="fa fa-times"></span>
+                    </button>
+                </div>
+                <input type="file" id="file_foto" (change)="setFileData($event, prueba, 'foto', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+            </div>
+            <input type="hidden" class="form-control" name="foto" id="field_foto"
+                [(ngModel)]="prueba.foto" />
+            <input type="hidden" class="form-control" name="fotoContentType" id="field_fotoContentType"
+                [(ngModel)]="prueba.fotoContentType" />
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

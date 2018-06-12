@@ -1,0 +1,49 @@
+<div class="allplaylist-page" *ngIf="playLists && spotifyUser">
+    <div class="create-playlist">
+        <p class="text-white play-list-title">Crear nueva playlist</p>
+        <button (click)="showCreatePlayListform = !showCreatePlayListform" class="rocktionary-theme">{{ showCreatePlayListform ? 'Cancelar' : 'Crear playlist' }}</button>
+        <form (submit)="createPlayList()" *ngIf="showCreatePlayListform" class="mt-3 play-list-form-container">
+            <div class="form-row">
+                <div class="form-group col-12">
+                    <input name="nombre" [(ngModel)]="playListName" type="text" placeholder="Nombre de la playlist" class="form-control form-control-sm">
+                </div>
+                <div class="form-group col-12">
+                    <textarea [(ngModel)]="playListDescripcion" class="form-control form-control-sm" name="description" placeholder="Descripcion (opcional)"></textarea>
+                </div>
+                <div class="form-group col-12">
+                    <input type="submit" class="rocktionary-theme" value="Crear playlist">
+                    <p class="alert alert-danger p-2" *ngIf="showFormError">El nombre de la playlist es obligatorio</p>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="user-playlist-container">
+        <span class="play-list-title" jhiTranslate="perfil.my-playlist"></span>
+        <p class="text-white">Número de playlist {{ playLists.items.length  }}</p>
+
+        <ul class="play-list list-unstyled">
+            <li *ngFor="let playList of playLists.items" class="playlist-item">
+                <div class="playlist-options" ngbDropdown>
+                    <button ngbDropdownToggle class="playlist-options-toggle fa fa-ellipsis-v"></button>
+                    <ul class="py-0 playlist-dropdown-menu" ngbDropdownMenu>
+                        <li (click)="removePlayList(spotifyUser.id, playList.id)">Borrar {{ playList.name }}</li>
+                        <li (click)="editPlayList(spotifyUser.id, playList.id)">Editar {{ playList.name }}</li>
+                    </ul>
+                </div>
+                <p class="playlist-disclaimer text-muted">{{ playList.public ? 'Pública' : 'Privada' }}</p>
+                <p class="text-white">
+                    Número de canciones: {{ playList.tracks.total }}
+                </p>
+                <a [routerLink]="['playlist', playList.id]" class="playlist-name text-white">{{ playList.name }}</a>
+                <p class="playlist-desription text-white">{{ playList.description }}</p>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="allplaylist-page" *ngIf="!playList && !spotifyUser">
+    <div class="loader-container">
+        <div class="loader"></div>
+    </div>
+</div>

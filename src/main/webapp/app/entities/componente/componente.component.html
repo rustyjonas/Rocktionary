@@ -1,0 +1,81 @@
+<div>
+    <h2>
+        <span jhiTranslate="rocktionaryApp.componente.home.title">Componentes</span>
+        <button class="btn btn-primary float-right jh-create-entity create-componente" [routerLink]="['/', { outlets: { popup: ['componente-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="rocktionaryApp.componente.home.createLabel">
+            Create new Componente
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="componentes">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="rocktionaryApp.componente.nombre">Nombre</span></th>
+            <th><span jhiTranslate="rocktionaryApp.componente.edad">Edad</span></th>
+            <th><span jhiTranslate="rocktionaryApp.componente.sexo">Sexo</span></th>
+            <th><span jhiTranslate="rocktionaryApp.componente.funcionGrupo">Funcion Grupo</span></th>
+            <th><span jhiTranslate="rocktionaryApp.componente.foto">Foto</span></th>
+            <th><span jhiTranslate="rocktionaryApp.componente.fechaEntrada">Fecha Entrada</span></th>
+            <th><span jhiTranslate="rocktionaryApp.componente.fechaSalida">Fecha Salida</span></th>
+            <th><span jhiTranslate="rocktionaryApp.componente.banda">Banda</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let componente of componentes ;trackBy: trackId">
+                <td><a [routerLink]="['../componente', componente.id ]">{{componente.id}}</a></td>
+                <td>{{componente.nombre}}</td>
+                <td>{{componente.edad}}</td>
+                <td>{{componente.sexo}}</td>
+                <td>{{componente.funcionGrupo}}</td>
+                <td>
+                    <a *ngIf="componente.foto" (click)="openFile(componente.fotoContentType, componente.foto)">
+                        <img [src]="'data:' + componente.fotoContentType + ';base64,' + componente.foto" style="max-height: 30px;" alt="componente image"/>
+                    </a>
+                    <span *ngIf="componente.foto">{{componente.fotoContentType}}, {{byteSize(componente.foto)}}</span>
+                </td>
+                <td>{{componente.fechaEntrada | date:'mediumDate'}}</td>
+                <td>{{componente.fechaSalida | date:'mediumDate'}}</td>
+                <td>
+                    <div *ngIf="componente.banda">
+                        <a [routerLink]="['../banda', componente.banda?.id ]" >{{componente.banda?.nombre}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../componente', componente.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'componente/'+ componente.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'componente/'+ componente.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

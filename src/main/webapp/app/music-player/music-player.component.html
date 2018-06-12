@@ -1,0 +1,59 @@
+<div class="music-player-container" [ngClass]="{'showPlayer': musicPlayerService.showPlayer, 'hidePlayer': !musicPlayerService.showPlayer}">
+
+
+        <i class="music-player-close fa fa-close" (click)="musicPlayerService.closePlayer()"></i>
+
+        <div class="music-player-img">
+            <img  [src]="musicPlayerService.albumImage" alt="">
+            <i (click)="musicPlayerService.togglePlay()" class="track-icon-play fa {{ musicPlayerService.isPlaying ? 'fa-pause' : 'fa-play' }}"></i>
+        </div>
+
+
+        <div class="content ml-3">
+            <p class="music-player-song-info text-white mb-1">
+                Ahora escuchando {{ musicPlayerService.song }} <br>
+                <a
+                    [routerLink]="['/banda', musicPlayerService.artistId]"
+                    class="font-weight-bold text-white music-player-artist"
+                    (click)="musicPlayerService.showBackButton = true"
+                >{{ musicPlayerService.group }}
+                </a>
+                <a *ngIf="musicPlayerService.showBackButton"
+                   [routerLink]="['/users', musicPlayerService.userLogin, 'playlist', musicPlayerService.playListId]"
+                   class="music-player-artist text-white"
+                   (click)="musicPlayerService.showBackButton = false"
+                >
+                    Volver a playlist {{ musicPlayerService.playListName }}
+                </a>
+            </p>
+
+            <div class="length controls">
+                <input
+                    [(ngModel)]="musicPlayerService.rangeValue"
+                    (input)="musicPlayerService.onProgressBarDrag()"
+                    [max]="musicPlayerService.rangeMax"
+                    type="range"
+                    step="0.1"
+                >
+
+                <p class="font-weight-light mb-0 timer text-white">
+                    {{ musicPlayerService.currentTime }} /
+                    {{ musicPlayerService.duration }}
+                </p>
+            </div>
+
+        </div>
+
+
+
+    <youtube-player
+        [videoId]="musicPlayerService.videoId"
+        (ready)="musicPlayerService.onSavePlayer($event)"
+        (change)="musicPlayerService.onStateChange($event)"
+    ></youtube-player>
+
+
+
+
+</div>
+

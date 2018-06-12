@@ -1,0 +1,72 @@
+<div>
+    <h2>
+        <span jhiTranslate="rocktionaryApp.comentarBanda.home.title">Comentar Bandas</span>
+        <button class="btn btn-primary float-right jh-create-entity create-comentar-banda" [routerLink]="['/', { outlets: { popup: ['comentar-banda-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="rocktionaryApp.comentarBanda.home.createLabel">
+            Create new Comentar Banda
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="comentarBandas">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="rocktionaryApp.comentarBanda.comentario">Comentario</span></th>
+            <th><span jhiTranslate="rocktionaryApp.comentarBanda.fechaComentario">Fecha Comentario</span></th>
+            <th><span jhiTranslate="rocktionaryApp.comentarBanda.bandaName">Banda Name</span></th>
+            <th><span jhiTranslate="rocktionaryApp.comentarBanda.user">User</span></th>
+            <th><span jhiTranslate="rocktionaryApp.comentarBanda.banda">Banda</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let comentarBanda of comentarBandas ;trackBy: trackId">
+                <td><a [routerLink]="['../comentar-banda', comentarBanda.id ]">{{comentarBanda.id}}</a></td>
+                <td>{{comentarBanda.comentario}}</td>
+                <td>{{comentarBanda.fechaComentario | date:'medium'}}</td>
+                <td>{{comentarBanda.bandaName}}</td>
+                <td>
+                    {{comentarBanda.user?.login}}
+                </td>
+                <td>
+                    <div *ngIf="comentarBanda.banda">
+                        <a [routerLink]="['../banda', comentarBanda.banda?.id ]" >{{comentarBanda.banda?.nombre}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../comentar-banda', comentarBanda.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'comentar-banda/'+ comentarBanda.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'comentar-banda/'+ comentarBanda.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

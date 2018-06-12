@@ -1,0 +1,246 @@
+.main{
+    padding: 6em 0;
+    background: url('../../../content/images/fondo/fondoPerfil.jpg') fixed;
+
+
+}
+
+.grid{
+    grid-gap: 5px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.img-audio-container{
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+.img-audio-container img{
+    transition: all cubic-bezier(0.28, 0.76, 0, 1.9) 0.2s;
+    height: 160px;
+    object-fit: cover;
+}
+
+img {
+    object-fit: cover;
+}
+
+.grid-list{
+    margin-bottom: 15px;
+    border: thin solid rgba(255, 255, 255, 0.4);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    border-radius: 2px;
+    transition: all ease-in 0.2s;
+    cursor: pointer;
+}
+
+.grid-list h5{
+    color: #fff;
+    padding: .5em .8em;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+}
+
+._container {
+    border-radius: 15px;
+    border: 1px solid lightgray;
+    background-color: rgba(0, 0, 0, 0.67);
+    margin-top: 30px;
+    width: 75%;
+    padding: 0 1.5rem;
+    margin:0 auto;
+    padding-bottom: 2em;
+}
+
+.img_perfil{
+    width: 400px;
+    position: relative;
+}
+.img_perfil img:first-child{
+    width: 457px;
+    z-index: 1;
+    position: relative;
+}
+
+.img_perfil img:last-child{
+    position: absolute;
+    height: 215px;
+    border-radius: 50%;
+    width: 215px;
+    left: 31%;
+    top: 15%;
+}
+
+.__top_canciones_res{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.__top_canciones_res div{
+    width: 33%;
+    margin-top: 1.5em;
+}
+.__top_canciones_res a{
+    display:block;
+}
+.__top_canciones_res img{
+    width: 85%;
+}
+
+.track_name{
+    font-size: 0.9rem !important;
+}
+
+.img-audio-container audio{
+    width: 160px;
+}
+
+.change-profile-pic{
+    display: block;
+    margin-right: auto;
+}
+
+.edit_profile{
+    width: 40%;
+    border: black;
+    background-color: rgba(160, 147, 147, 0.63);
+    padding: 0.5em 2em;
+    font-size: 1.2rem;
+}
+
+.nom_perfil, .no-user-found{
+    display: block;
+    font-family: 'New Rocker', cursive;
+    font-size: 4rem;
+    background: -webkit-linear-gradient(#000, #9c936b);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    -webkit-text-stroke: 2px white;
+}
+
+
+
+/*<!--Datos de perfil-->*/
+
+
+/*<!--top canciones mas escuchados-->*/
+
+
+.top_canciones{
+    text-align: center;
+}
+
+.top_canciones span{
+    color: white;
+}
+
+.perfil{
+    display: flex;
+    justify-content: space-between;
+    padding: 2em 0;
+}
+
+.perfil-username-container {
+    text-align: center;
+}
+
+
+
+
+
+@media (min-width: 768px){
+    .nom_perfil{
+        font-size: 4.5rem;
+    }
+}
+
+.choose-picture {
+    position: absolute;
+    color: #fff;
+    top: 50px;
+    left: 100px;
+    z-index: 20;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+
+@media (min-width: 992px){
+    .nom_perfil{
+        font-size: 5rem;
+    }
+}
+
+
+
+@media (min-width: 1200px){
+
+    .top_canciones .play-list-title{
+        font-size: 2.6rem;
+    }
+    .nom_perfil{
+        font-size: 5.5rem;
+    }
+
+
+}
+
+.playlist-item {
+    position: relative;
+    background-color: #000;
+    padding: 1em;
+    border-radius: 2px;
+    margin-bottom: 10px;
+    border: thin solid rgba(#fff, 0.4);
+    transition: all ease-in 0.2s;
+    &:hover {
+        border-color: #fff;
+    }
+}
+
+.playlist-options {
+    position: static;
+}
+.playlist-options-toggle {
+    outline: none;
+    cursor: pointer;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    padding: 5px;
+    border: thin solid rgba(#fff, 0.4);
+    background-color: #000;
+    border-radius: 2px;
+    color: #fff;
+    transition: all ease-in 0.2s;
+    &:hover {
+        border-color: #fff;
+    }
+
+}
+.playlist-dropdown-menu {
+    padding: 5px 10px;
+    border: thin solid rgba(#fff, 0.4);
+    background-color: #000;
+    border-radius: 2px;
+    color: #fff;
+    cursor: pointer;
+    transition: all ease-in 0.2s;
+    &:hover {
+        border-color: #fff;
+    }
+}
+.playlist-options-toggle::after {
+    content: none;
+}
+

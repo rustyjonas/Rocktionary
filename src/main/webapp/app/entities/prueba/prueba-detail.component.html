@@ -1,0 +1,31 @@
+
+<div *ngIf="prueba">
+    <h2><span jhiTranslate="rocktionaryApp.prueba.detail.title">Prueba</span> {{prueba.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="rocktionaryApp.prueba.foto">Foto</span></dt>
+        <dd>
+            <div *ngIf="prueba.foto">
+                <a (click)="openFile(prueba.fotoContentType, prueba.foto)">
+                    <img [src]="'data:' + prueba.fotoContentType + ';base64,' + prueba.foto" style="max-width: 100%;" alt="prueba image"/>
+                </a>
+                {{prueba.fotoContentType}}, {{byteSize(prueba.foto)}}
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'prueba/'+ prueba.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

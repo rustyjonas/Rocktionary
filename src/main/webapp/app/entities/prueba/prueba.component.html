@@ -1,0 +1,63 @@
+<div>
+    <h2>
+        <span jhiTranslate="rocktionaryApp.prueba.home.title">Pruebas</span>
+        <button class="btn btn-primary float-right jh-create-entity create-prueba" [routerLink]="['/', { outlets: { popup: ['prueba-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="rocktionaryApp.prueba.home.createLabel">
+            Create new Prueba
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="pruebas">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="rocktionaryApp.prueba.foto">Foto</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let prueba of pruebas ;trackBy: trackId">
+                <td><a [routerLink]="['../prueba', prueba.id ]">{{prueba.id}}</a></td>
+                <td>
+                    <a *ngIf="prueba.foto" (click)="openFile(prueba.fotoContentType, prueba.foto)">
+                        <img [src]="'data:' + prueba.fotoContentType + ';base64,' + prueba.foto" style="max-height: 30px;" alt="prueba image"/>
+                    </a>
+                    <span *ngIf="prueba.foto">{{prueba.fotoContentType}}, {{byteSize(prueba.foto)}}</span>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../prueba', prueba.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'prueba/'+ prueba.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'prueba/'+ prueba.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

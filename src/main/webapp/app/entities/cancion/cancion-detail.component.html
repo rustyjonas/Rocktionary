@@ -1,0 +1,78 @@
+<div *ngIf="cancion">
+    <div class="album-detail">
+        <div class="col-12 album-detail__cover">
+            <div class="blurred-container">
+                <div class="blurred" [ngStyle]="{'background-image':'url('+banda.images[0].url+')'}">
+                </div>
+            </div>
+            <div class="container container-mid">
+                <div class="album_perfil">
+                    <img src="../../entities/equipo/img/rockframeV2.png" alt="">
+                    <img [src]="cancion.album.images[0].url"  alt="Imagen de album"/>
+                    <!--<input type="range" min="0" max="100" value="40" id="fader" step="1">-->
+                </div>
+                <div class="album-detail__stats">
+                    <!--<a class="active" (click)="triggerClass($event)" href="">General</a>-->
+                    <!--<a (click)="triggerClass($event)" href="">Seguidores</a>-->
+                    <!--<a (click)="triggerClass($event)" href="">Comentarios</a>-->
+                </div>
+            </div>
+        </div>
+        <div class="col-12 album-detail__resumen">
+            <div class="container">
+                <div class="div-50 tabs">
+                    <!--<div ng-if="vm.showGeneral" class="general">-->
+                    <!--<span class="resumen-label">INFORMACIÓN GENERAL</span>-->
+                    <!--<p>{{vm.album.localizacion}}</p>-->
+                    <!--</div>-->
+                    <!--<div ng-if="vm.showSeguidores" class="seguidores">-->
+                    <!--<span class="resumen-label">SEGUIDORES</span>-->
+                    <!--<p>{{vm.album.localizacion}}</p>-->
+                    <!--</div>-->
+                    <!--<div ng-if="vm.showComentarios" class="comentarios">-->
+                    <!--<span class="resumen-label">COMENTARIOS</span>-->
+                    <!--<form ng-submit="vm.addComment()" name="addComentForm" class="commentarios__form">-->
+                    <!--<textarea name="comment" ng-model="vm.commentText" placeholder="Deja tú comentario..." required></textarea>-->
+                    <!--<button ng-disabled="addComentForm.$invalid" type="submit">Enviar</button>-->
+                    <!--</form>-->
+                    <!--</div>-->
+                    <section class="album-canciones">
+                        <!--<h3>Canciones de {{album.name}}</h3>-->
+                        <!--<ul>-->
+                            <!--<li *ngFor="let album of albumTracks.items">-->
+                                <!--<h5>{{album.name}} {{album.explicit ? '(Explicita)' : ''}}</h5>-->
+                                <!--<span>{{parseMillis(album.duration_ms)}}</span>-->
+                                <!--<div class="album-cancion-container">-->
+                                    <!--<audio controls>-->
+                                        <!--<source [src]="sanitizeUrl(album.preview_url)">-->
+                                    <!--</audio>-->
+                                <!--</div>-->
+                            <!--</li>-->
+                        <!--</ul>-->
+                    </section>
+                </div>
+                <div class="div-50 more-info">
+                    <youtube-player
+                        [videoId]="id"
+                        (ready)="savePlayer($event)"
+                        (change)="onStateChange($event)"
+                    ></youtube-player>
+
+                    <h1 class="album-name">{{cancion.name}}</h1>
+                    <div class="player-controls">
+                        <img [src]="videoThumbImg" alt="">
+                        <i class="fa player-trigger" [ngClass]="{'fa-pause': isPlaying, 'fa-play': !isPlaying}" (click)="toggleVideo()"></i>
+                        <input class="player-slider" [(ngModel)]="rangeVal" (input)="dragg()" (change)="dragg()" type="range" step="0.1"  min="0" [max]="max">
+                        <p class="font-weight-bold mb-0">{{ currentDuration }} / {{ totalDuration }}</p>
+                    </div>
+                    <h3>
+                        <a class="album-spotify-profile" target="_blank" [href]="cancion.external_urls.spotify">Escucha {{cancion.name}} en Spotify</a>
+                    </h3>
+                    <!--<p>Canciones <span class="album-canciones-total">{{albumTracks.total}}</span></p>-->
+                    <!--<p>{{vm.bandaBio}}</p>-->
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

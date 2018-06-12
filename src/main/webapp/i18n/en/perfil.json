@@ -1,0 +1,14 @@
+{
+    "perfil":{
+        "title": "Profile",
+        "first-name": "Name: ",
+        "last-name": "Last name: ",
+        "email": "Email: ",
+        "my-playlist": "My Playlists",
+        "no-playlist-created": "You haven't created a playlist yet",
+        "edit-profile": "Edit Profile",
+        "upload-picture": "Upload new picture"
+
+
+    }
+}

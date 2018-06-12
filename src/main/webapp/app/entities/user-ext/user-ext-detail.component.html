@@ -1,0 +1,55 @@
+
+<div *ngIf="userExt">
+    <h2><span jhiTranslate="rocktionaryApp.userExt.detail.title">User Ext</span> {{userExt.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="rocktionaryApp.userExt.foto">Foto</span></dt>
+        <dd>
+            <div *ngIf="userExt.foto">
+                <a (click)="openFile(userExt.fotoContentType, userExt.foto)">
+                    <img [src]="'data:' + userExt.fotoContentType + ';base64,' + userExt.foto" style="max-width: 100%;" alt="userExt image"/>
+                </a>
+                {{userExt.fotoContentType}}, {{byteSize(userExt.foto)}}
+            </div>
+        </dd>
+        <dt><span jhiTranslate="rocktionaryApp.userExt.latitud">Latitud</span></dt>
+        <dd>
+            <span>{{userExt.latitud}}</span>
+        </dd>
+        <dt><span jhiTranslate="rocktionaryApp.userExt.longitud">Longitud</span></dt>
+        <dd>
+            <span>{{userExt.longitud}}</span>
+        </dd>
+        <dt><span jhiTranslate="rocktionaryApp.userExt.localidad">Localidad</span></dt>
+        <dd>
+            <span>{{userExt.localidad}}</span>
+        </dd>
+        <dt><span jhiTranslate="rocktionaryApp.userExt.spotifyToken">Spotify Token</span></dt>
+        <dd>
+            <span>{{userExt.spotifyToken}}</span>
+        </dd>
+        <dt><span jhiTranslate="rocktionaryApp.userExt.refreshToken">Refresh Token</span></dt>
+        <dd>
+            <span>{{userExt.refreshToken}}</span>
+        </dd>
+        <dt><span jhiTranslate="rocktionaryApp.userExt.user">User</span></dt>
+        <dd>
+            {{userExt.user?.login}}
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'user-ext/'+ userExt.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,20 @@
+<div *ngIf="videoPlayerGlobals.showVideoPlayer" id="videoPlayerContainer">
+    <div class="videoInfo">
+    <p>Ahora escuchando <span class="song-name">{{ videoPlayerGlobals.videoInfo.nombre }}...</span></p>
+    <a class="volver-banda" [routerLink]="['/banda', videoPlayerGlobals.videoInfo.bandaId]">Volver a la página de {{ videoPlayerGlobals.videoInfo.bandaNombre }}</a>
+    <div class="controls">
+    <button (click)="videoPlayerGlobals.minimizeYoutubeVideo($event)"
+    class="text-white fa"
+    [ngClass]="{'fa-window-minimize': videoPlayerGlobals.showVideo, 'fa-window-maximize': !videoPlayerGlobals.showVideo}"
+    ></button>
+    <button (click)="videoPlayerGlobals.closeYoutubeVideo($event)" class="text-white fa fa-window-close"></button>
+    </div>
+    </div>
+    <div [hidden]="!videoPlayerGlobals.showVideo" class="videoContainer">
+        <iframe [src]="videoPlayerGlobals.videoUrl" width="560" height="315"
+                allowfullscreen
+                allowusermedia
+                allowtransparency>
+        </iframe>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+
+<div *ngIf="puntuacionAlbum">
+    <h2><span jhiTranslate="rocktionaryApp.puntuacionAlbum.detail.title">Puntuacion Album</span> {{puntuacionAlbum.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="rocktionaryApp.puntuacionAlbum.valoracion">Valoracion</span></dt>
+        <dd>
+            <span>{{puntuacionAlbum.valoracion}}</span>
+        </dd>
+        <dt><span jhiTranslate="rocktionaryApp.puntuacionAlbum.fechaPuntuacion">Fecha Puntuacion</span></dt>
+        <dd>
+            <span>{{puntuacionAlbum.fechaPuntuacion | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="rocktionaryApp.puntuacionAlbum.user">User</span></dt>
+        <dd>
+            {{puntuacionAlbum.user?.login}}
+        </dd>
+        <dt><span jhiTranslate="rocktionaryApp.puntuacionAlbum.album">Album</span></dt>
+        <dd>
+            <div *ngIf="puntuacionAlbum.album">
+                <a [routerLink]="['/album', puntuacionAlbum.album?.id]">{{puntuacionAlbum.album?.nombre}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'puntuacion-album/'+ puntuacionAlbum.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

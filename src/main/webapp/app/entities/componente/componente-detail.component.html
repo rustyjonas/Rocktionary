@@ -1,0 +1,61 @@
+
+<div *ngIf="componente">
+    <h2><span jhiTranslate="rocktionaryApp.componente.detail.title">Componente</span> {{componente.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="rocktionaryApp.componente.nombre">Nombre</span></dt>
+        <dd>
+            <span>{{componente.nombre}}</span>
+        </dd>
+        <dt><span jhiTranslate="rocktionaryApp.componente.edad">Edad</span></dt>
+        <dd>
+            <span>{{componente.edad}}</span>
+        </dd>
+        <dt><span jhiTranslate="rocktionaryApp.componente.sexo">Sexo</span></dt>
+        <dd>
+            <span>{{componente.sexo}}</span>
+        </dd>
+        <dt><span jhiTranslate="rocktionaryApp.componente.funcionGrupo">Funcion Grupo</span></dt>
+        <dd>
+            <span>{{componente.funcionGrupo}}</span>
+        </dd>
+        <dt><span jhiTranslate="rocktionaryApp.componente.foto">Foto</span></dt>
+        <dd>
+            <div *ngIf="componente.foto">
+                <a (click)="openFile(componente.fotoContentType, componente.foto)">
+                    <img [src]="'data:' + componente.fotoContentType + ';base64,' + componente.foto" style="max-width: 100%;" alt="componente image"/>
+                </a>
+                {{componente.fotoContentType}}, {{byteSize(componente.foto)}}
+            </div>
+        </dd>
+        <dt><span jhiTranslate="rocktionaryApp.componente.fechaEntrada">Fecha Entrada</span></dt>
+        <dd>
+            <span>{{componente.fechaEntrada | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="rocktionaryApp.componente.fechaSalida">Fecha Salida</span></dt>
+        <dd>
+            <span>{{componente.fechaSalida | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="rocktionaryApp.componente.banda">Banda</span></dt>
+        <dd>
+            <div *ngIf="componente.banda">
+                <a [routerLink]="['/banda', componente.banda?.id]">{{componente.banda?.nombre}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'componente/'+ componente.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

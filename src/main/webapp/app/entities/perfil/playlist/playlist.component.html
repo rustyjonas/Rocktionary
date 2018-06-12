@@ -1,0 +1,43 @@
+<div class="play-list-page" *ngIf="playList && spotifyUser">
+    <p class="text-white">PlayList</p>
+    <p class="text-white playlist-name">{{ playList.name }}</p>
+    <p class="text-white playlist-desc">{{ playList.description }}</p>
+    <a (click)="goBack()" class="d-inline-block rocktionary-theme btn-sm text-white gobackbutton">
+        <i class="fa fa-chevron-left"></i>
+        Volver a lista de playlists
+    </a>
+
+
+    <ng-container *ngIf="playList.tracks.items.length">
+        <div class="tracks-container">
+            <h3 class="text-white">Canciones de {{ playList.name }}</h3>
+            <ul class="grid" #grid>
+                <li *ngFor="let Track of playList.tracks.items">
+                    <i class="text-white fa remove-track-icon fa-remove" (click)="removePlayListTrack(Track.track)"></i>
+                    <h5 (click)="toggleIcon(Track.track.artists[0].name, Track.track.name, Track.track.album.images[0].url, Track.track.artists[0].id)">{{Track.track.name}}</h5>
+                    <div class="img-audio-container">
+                        <img class="imagen-audio" [src]="Track.track.album.images[0].url">
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="!playList.tracks.items.length">
+        <div class="tracks-container mt-5">
+            <p class="font-weight-light text-white">Aún no tienes canciones añadidas <br>
+            ¡A que esperas para añadir canciones!
+            </p>
+        </div>
+    </ng-container>
+
+</div>
+
+
+<div class="play-list-page" *ngIf="!playList && !spotifyUser">
+    <div class="loader-container">
+        <div class="loader"></div>
+    </div>
+</div>
+
+<!--<button ngbPopover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." popoverTitle="Añadiendo cancion a {{ playList.name }}" class="rocktionary-theme btn-sm playlist-add-track-btn" (click)="showAddTrackToPlayListForm = !showAddTrackToPlayListForm">Añadir canción</button>-->

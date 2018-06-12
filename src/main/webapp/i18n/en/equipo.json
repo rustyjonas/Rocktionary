@@ -1,0 +1,37 @@
+{
+    "equipo":{
+        "menu": "Equipo",
+        "title": "The team",
+        "descripcion": "“We are four students of web application development, and we invite you to browse ROCKTIONARY because we want to reflect everything we have learned in the course and also share our love of rock music.“",
+        "about-us":{
+            "miembro1":{
+                "name": "Angelo Danan",
+                "info1": "I'm Angelo and I want you to discover and enjoy rock music with this page.",
+                "info2": "I trained in audiovisual specializing in photography and now with an interest in learning about the world of web development in order to expand the media in which I can apply my audiovisual knowledge.",
+                "Frase-preferida1":"Preferred phrase:",
+                "Frase-preferida2": "“Life is like a CAMERA, FOCUS on what’s important, CAPTURE the good times, DEVELOP from negatives, and if things don’t work out just TAKE ANOTHER SHOT.“"
+            },
+            "miembro2":{
+                "name": "Rusty Gallardo",
+                "info1": "My name is Rusty I love music and programming, so I'd love you to enjoy this page as much as I create it.",
+                "info2": "I have always been interested in the computer world and I was previously trained in networking, now I am fascinated by the creation of web pages and I intend to specialize in it.",
+                "Frase-preferida1":"Preferred phrase:",
+                "Frase-preferida2": "“¡GAMERS don’t die, they RESPAWN!“"
+            },
+            "miembro3":{
+                "name": "Martin Hernandez",
+                "info1": "I'm Martin and I hope you like the experience of navigating the pages of ROCKTIONARY as much as I develop it.",
+                "info2": "I've always liked the world of technology, I first trained in networks and microcomputer systems where I discovered my passion for programming, specifically the development of web applications, I currently have a year of experience making web applications.",
+                "Frase-preferida1":"Preferred phrase:",
+                "Frase-preferida2": "“Success is the sum of small efforts repeated day after day.”"
+            },
+            "miembro4":{
+                "name": "Albert Serrano",
+                "info1": "My name is Albert, my passion for rock music and the development of web applications are reflected in this page that I hope you enjoy.",
+                "info2": "Passionate about rock music and new technologies, I was always interested in computer science in general, so I changed my studies in business administration to develop web applications with the aim of becoming specialized.",
+                "Frase-preferida1":"Preferred phrase:",
+                "Frase-preferida2": "“Live as if you were to die tomorrow, learn as if you were going to live forever.”"
+            }
+        }
+    }
+}

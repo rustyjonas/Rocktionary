@@ -1,0 +1,158 @@
+.footer{
+    background: rgba(28, 28, 28, 1);
+    padding-top: 0.5em;
+}
+
+.logo_stucom{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    color: white;
+}
+
+.logo_stucom span{
+    width: 100%;
+    text-align: center;
+}
+
+.logo_stucom a{
+    text-align: center;
+}
+
+.logo_stucom img{
+    max-width: 70%;
+}
+
+
+
+.__footer{
+    padding-bottom: 1em;
+}
+
+.footer_links{
+    display: flex;
+    border-radius: 12px;
+    text-shadow: -1px -1px 0px #0e0d0d, 1px 1px 1px #101010, -1px 1px 1px #080808, 2px -1px #151414;
+    font-weight: 600;
+    flex-wrap: wrap;
+    align-items: center;
+    height: auto;
+    text-decoration: none;
+}
+
+.footer_links a {
+    color: #5f5d5d;
+}
+
+.footer_links span:not(:last-child){
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-size: 1.2rem;
+    text-shadow: -1px -1px 0px #0e0d0d, 1px 1px 1px #101010, -1px 1px 1px #080808, 2px -1px #151414;
+
+}
+
+.footer_links a:not(:first-child){
+    width: 25%;
+    text-align: center;
+    font-weight: 400;
+}
+
+.copy_right{
+    display: block;
+    color: white;
+    text-align: center;
+    font-size: x-small;
+}
+
+.__footer div:not(:nth-child(2)){
+    font-weight: 400;
+    font-size: 0.9rem;
+}
+
+.__footer_links{
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    padding: 1em 1em 0 1em;;
+}
+
+.__footer_links-item{
+    width: 33%;
+    text-align: center;
+}
+
+.__footer_links-item:last-child{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 1em;
+    border-top: 3px solid #635c5c;
+    margin-top: 2em;
+    font-size: .8rem;
+}
+
+.__footer_links-item a{
+    width: 33% !important;
+}
+
+.__footer_links-item a.active{
+    color: white;
+}
+
+
+
+
+.socials{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0 6em;
+}
+.socials span{
+    width: 100%;
+    text-align: center;
+}
+
+.socials a{
+    width: 33.3%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 0.2em;
+}
+
+
+.socials a:nth-child(2) img{max-width: 65%;}
+.socials a:nth-child(2) img:hover{content: url('../../../content/images/logo/facebook_logo.png');}
+
+.socials a:nth-child(3) img{max-width: 49%;}
+.socials a:nth-child(3) img:hover{content: url('../../../content/images/logo/instagram_logo.png');}
+
+.socials a:nth-child(n+4) img{max-width: 42%;}
+.socials a:nth-child(4) img:hover{content: url('../../../content/images/logo/googleplus_logo.png');}
+
+
+.socials a:nth-child(5) img:hover{content: url('../../../content/images/logo/twitter_logo.png');}
+
+
+.socials a:nth-child(6) img:hover{content: url('../../../content/images/logo/spotify_logo.png');}
+
+.socials a:last-child img:hover{content: url('../../../content/images/logo/youtube_logo.png');}
+
+
+.socials a:first-child{
+    margin-left:3em;
+}
+
+span{
+    text-shadow: 1px 1px 8px rgba(0, 0, 0, 1);
+}
+
+.col-3 {
+    flex: 0 0 15%;
+    max-width: 15%;
+}
+

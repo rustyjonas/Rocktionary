@@ -1,0 +1,125 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myBandaLabel" jhiTranslate="rocktionaryApp.banda.home.createOrEditLabel">Create or edit a Banda</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!banda.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="banda.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="rocktionaryApp.banda.nombre" for="field_nombre">Nombre</label>
+            <input type="text" class="form-control" name="nombre" id="field_nombre"
+                [(ngModel)]="banda.nombre" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="rocktionaryApp.banda.localizacion" for="field_localizacion">Localizacion</label>
+            <input type="text" class="form-control" name="localizacion" id="field_localizacion"
+                [(ngModel)]="banda.localizacion" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="rocktionaryApp.banda.datacreacion" for="field_datacreacion">Datacreacion</label>
+            <div class="input-group">
+                <input id="field_datacreacion" type="text" class="form-control" name="datacreacion" ngbDatepicker  #datacreacionDp="ngbDatepicker" [(ngModel)]="banda.datacreacion"
+                />
+                <span class="input-group-append">
+                    <button type="button" class="btn btn-secondary" (click)="datacreacionDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="rocktionaryApp.banda.anosactivo" for="field_anosactivo">Anosactivo</label>
+            <div class="input-group">
+                <input id="field_anosactivo" type="text" class="form-control" name="anosactivo" ngbDatepicker  #anosactivoDp="ngbDatepicker" [(ngModel)]="banda.anosactivo"
+                />
+                <span class="input-group-append">
+                    <button type="button" class="btn btn-secondary" (click)="anosactivoDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="rocktionaryApp.banda.temas" for="field_temas">Temas</label>
+            <input type="text" class="form-control" name="temas" id="field_temas"
+                [(ngModel)]="banda.temas" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="rocktionaryApp.banda.discografica" for="field_discografica">Discografica</label>
+            <input type="text" class="form-control" name="discografica" id="field_discografica"
+                [(ngModel)]="banda.discografica" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="rocktionaryApp.banda.foto" for="field_foto">Foto</label>
+            <div>
+                <img [src]="'data:' + banda.fotoContentType + ';base64,' + banda.foto" style="max-height: 100px;" *ngIf="banda.foto" alt="banda image"/>
+                <div *ngIf="banda.foto" class="form-text text-danger clearfix">
+                    <span class="pull-left">{{banda.fotoContentType}}, {{byteSize(banda.foto)}}</span>
+                    <button type="button" (click)="clearInputImage('foto', 'fotoContentType', 'fileImage')" class="btn btn-secondary btn-xs pull-right">
+                        <span class="fa fa-times"></span>
+                    </button>
+                </div>
+                <input type="file" id="file_foto" (change)="setFileData($event, banda, 'foto', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+            </div>
+            <input type="hidden" class="form-control" name="foto" id="field_foto"
+                [(ngModel)]="banda.foto" />
+            <input type="hidden" class="form-control" name="fotoContentType" id="field_fotoContentType"
+                [(ngModel)]="banda.fotoContentType" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="rocktionaryApp.banda.logo" for="field_logo">Logo</label>
+            <div>
+                <img [src]="'data:' + banda.logoContentType + ';base64,' + banda.logo" style="max-height: 100px;" *ngIf="banda.logo" alt="banda image"/>
+                <div *ngIf="banda.logo" class="form-text text-danger clearfix">
+                    <span class="pull-left">{{banda.logoContentType}}, {{byteSize(banda.logo)}}</span>
+                    <button type="button" (click)="clearInputImage('logo', 'logoContentType', 'fileImage')" class="btn btn-secondary btn-xs pull-right">
+                        <span class="fa fa-times"></span>
+                    </button>
+                </div>
+                <input type="file" id="file_logo" (change)="setFileData($event, banda, 'logo', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+            </div>
+            <input type="hidden" class="form-control" name="logo" id="field_logo"
+                [(ngModel)]="banda.logo" />
+            <input type="hidden" class="form-control" name="logoContentType" id="field_logoContentType"
+                [(ngModel)]="banda.logoContentType" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="rocktionaryApp.banda.pais" for="field_pais">Pais</label>
+            <input type="text" class="form-control" name="pais" id="field_pais"
+                [(ngModel)]="banda.pais" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="rocktionaryApp.banda.estado" for="field_estado">Estado</label>
+            <input type="text" class="form-control" name="estado" id="field_estado"
+                [(ngModel)]="banda.estado" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="rocktionaryApp.banda.genero" for="field_genero">Genero</label>
+            <input type="text" class="form-control" name="genero" id="field_genero"
+                [(ngModel)]="banda.genero" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="rocktionaryApp.banda.biografia" for="field_biografia">Biografia</label>
+            <input type="text" class="form-control" name="biografia" id="field_biografia"
+                [(ngModel)]="banda.biografia" />
+        </div>
+
+        <div class="form-group">
+            <label jhiTranslate="rocktionaryApp.banda.discografica" for="field_discografica">Discografica</label>
+            <select class="form-control" id="field_discografica" multiple name="discografica" [(ngModel)]="banda.discograficas">
+                <option [ngValue]="getSelected(banda.discograficas, discograficaOption)" *ngFor="let discograficaOption of discograficas; trackBy: trackDiscograficaById">{{discograficaOption.nombre}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

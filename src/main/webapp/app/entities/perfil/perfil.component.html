@@ -1,0 +1,61 @@
+
+
+<div class="main mt-5">
+    <div *ngIf="userExt" class="_container">
+        <div class="row perfil">
+            <div class="col-5" style="position: relative;">
+                <label class="fa fa-camera choose-picture">
+                    <input style="display: none" type="file" (change)="onFileInputChange($event)" accept="image/*">
+                </label>
+                <div class="img_perfil">
+                    <img src="../../entities/equipo/img/rockframeV2.png" alt="">
+                    <img [src]="userExt.fotoUrl" alt="userExt image"/>
+                </div>
+
+                <div class="perfil-datos mt-5">
+                    <div class="text-white">
+                        <span jhiTranslate="perfil.first-name"></span>
+                        <span>{{userExt.user.firstName}}</span>
+                    </div>
+                    <div class="text-white">
+                        <span jhiTranslate="perfil.last-name"></span>
+                        <span>{{userExt.user.lastName}}</span>
+                    </div>
+
+                    <div class="text-white">
+                        <span jhiTranslate="perfil.email"></span>
+                        <span>{{userExt.user.email}}</span>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="perfil-username-container col-6">
+                <span class="nom_perfil ">{{ userExt.user.login }}</span>
+                <a routerLink="/settings" routerLinkActive="active"  class="btn btn-dark edit_profile text-white">
+                    <span jhiTranslate="perfil.edit-profile"></span>
+                </a>
+
+
+                <div class="mt-5">
+                    <router-outlet></router-outlet>
+                </div>
+
+            </div>
+
+            <!--<button class="ml-5 change-profile-pic rocktionary-theme" [routerLink]="['/', { outlets: { popup: 'user-ext/'+ userExt.user.id + '/edit'} }]">-->
+                <!--<i class="fa fa-plus"></i>-->
+                <!--<span class="btn" jhiTranslate="perfil.upload-picture"></span>-->
+            <!--</button>-->
+
+        </div>
+
+
+    <div *ngIf="!userExt" class="container my-5">
+        <p class="no-user-found text-center">No se ha encontrado ningún usuario con el nombre {{ routeUserName }}</p>
+    </div>
+
+</div>
+
+</div>
